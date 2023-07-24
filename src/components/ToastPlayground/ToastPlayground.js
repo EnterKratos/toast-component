@@ -1,7 +1,6 @@
 import React from 'react';
-
 import Button from '../Button';
-
+import Toast from "../Toast";
 import styles from './ToastPlayground.module.css';
 
 const VARIANT_OPTIONS = ['notice', 'warning', 'success', 'error'];
@@ -21,6 +20,10 @@ function ToastPlayground() {
         <img alt="Cute toast mascot" src="/toast.png" />
         <h1>Toast Playground</h1>
       </header>
+
+      <Toast>
+        {toastMessage}
+      </Toast>
 
       <div className={styles.controlsWrapper}>
         <div className={styles.row}>
