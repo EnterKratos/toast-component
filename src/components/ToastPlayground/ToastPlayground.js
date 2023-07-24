@@ -4,11 +4,17 @@ import styles from './ToastPlayground.module.css';
 import ToastShelf from "../ToastShelf";
 
 const VARIANT_OPTIONS = ['notice', 'warning', 'success', 'error'];
+const DEFAULT_VARIANT = 'notice';
 
 function ToastPlayground() {
   const [toastMessage, setToastMessage] = React.useState('');
-  const [selectedVariant, setSelectedVariant] = React.useState('notice');
+  const [selectedVariant, setSelectedVariant] = React.useState(DEFAULT_VARIANT);
   const [toasts, setToasts] = React.useState([]);
+
+  const resetForm = () => {
+    setSelectedVariant(DEFAULT_VARIANT);
+    setToastMessage('');
+  }
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -18,7 +24,9 @@ function ToastPlayground() {
       id: crypto.randomUUID(),
       variant: selectedVariant,
       message: toastMessage,
-    }])
+    }]);
+
+    resetForm();
   };
 
   const handleRemove = (id) => {
