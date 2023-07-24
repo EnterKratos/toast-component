@@ -10,7 +10,7 @@ function ToastPlayground() {
   const [selected, setSelected] = React.useState('notice');
   const [displayToast, setDisplayToast] = React.useState(false);
 
-  const handleClick = (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
     console.log(`${selected}: ${toastMessage}`)
     setDisplayToast(true)
@@ -30,7 +30,8 @@ function ToastPlayground() {
         )
       }
 
-      <div className={styles.controlsWrapper}>
+      <form onSubmit={handleSubmit}>
+        <div className={styles.controlsWrapper}>
         <div className={styles.row}>
           <label
             htmlFor="message"
@@ -78,10 +79,11 @@ function ToastPlayground() {
           <div
             className={`${styles.inputWrapper} ${styles.radioWrapper}`}
           >
-            <Button onClick={handleClick}>Pop Toast!</Button>
+            <Button type="submit">Pop Toast!</Button>
           </div>
         </div>
       </div>
+      </form>
     </div>
   );
 }
