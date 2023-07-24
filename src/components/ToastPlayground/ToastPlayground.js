@@ -21,7 +21,7 @@ function ToastPlayground() {
         <h1>Toast Playground</h1>
       </header>
 
-      <Toast>
+      <Toast variant={selected}>
         {toastMessage}
       </Toast>
 
