@@ -3,6 +3,7 @@ import Button from '../Button';
 import styles from './ToastPlayground.module.css';
 import ToastShelf from "../ToastShelf";
 import {ToastContext} from "../ToastProvider";
+import useKey from "../../hooks/useKey";
 
 const VARIANT_OPTIONS = ['notice', 'warning', 'success', 'error'];
 const DEFAULT_VARIANT = 'notice';
@@ -10,7 +11,9 @@ const DEFAULT_VARIANT = 'notice';
 function ToastPlayground() {
   const [toastMessage, setToastMessage] = React.useState('');
   const [selectedVariant, setSelectedVariant] = React.useState(DEFAULT_VARIANT);
-  const { toasts, createToast, closeToast } = React.useContext(ToastContext);
+  const { toasts, createToast, closeAll } = React.useContext(ToastContext);
+
+  useKey('Escape', closeAll);
 
   const resetForm = () => {
     setSelectedVariant(DEFAULT_VARIANT);
